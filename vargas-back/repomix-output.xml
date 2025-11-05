@@ -1,0 +1,2048 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+.gitignore
+.mvn/wrapper/maven-wrapper.jar
+.mvn/wrapper/maven-wrapper.properties
+.mvn/wrapper/MavenWrapperDownloader.java
+mvnw
+mvnw.cmd
+pom.xml
+src/main/java/com/vargas/food/controller/CartController.java
+src/main/java/com/vargas/food/controller/ContactController.java
+src/main/java/com/vargas/food/controller/FoodController.java
+src/main/java/com/vargas/food/controller/LoginController.java
+src/main/java/com/vargas/food/controller/RegistrationController.java
+src/main/java/com/vargas/food/dao/CartDao.java
+src/main/java/com/vargas/food/dao/CartDaoImpl.java
+src/main/java/com/vargas/food/dao/ContactDao.java
+src/main/java/com/vargas/food/dao/ContactDaoImpl.java
+src/main/java/com/vargas/food/dao/FoodDao.java
+src/main/java/com/vargas/food/dao/FoodDaoImpl.java
+src/main/java/com/vargas/food/dao/UserDao.java
+src/main/java/com/vargas/food/dao/UserDaoImpl.java
+src/main/java/com/vargas/food/model/Cart.java
+src/main/java/com/vargas/food/model/Contact.java
+src/main/java/com/vargas/food/model/Food.java
+src/main/java/com/vargas/food/model/Login.java
+src/main/java/com/vargas/food/model/NewCart.java
+src/main/java/com/vargas/food/model/NewFood.java
+src/main/java/com/vargas/food/model/User.java
+src/main/java/com/vargas/food/utility/StrongAES.java
+src/main/java/com/vargas/food/vargasApplication.java
+src/main/resources/application.properties
+src/main/resources/dbScripts/ddl.sql
+src/test/java/com/vargas/food/ApiTests.java
+src/test/java/com/vargas/food/vargasApplicationTests.java
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path=".gitignore">
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**
+!**/src/test/**
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+
+### VS Code ###
+.vscode/
+</file>
+
+<file path=".mvn/wrapper/maven-wrapper.properties">
+distributionUrl=https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.6.0/apache-maven-3.6.0-bin.zip
+</file>
+
+<file path=".mvn/wrapper/MavenWrapperDownloader.java">
+/*
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+  https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+*/
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.URL;
+import java.nio.channels.Channels;
+import java.nio.channels.ReadableByteChannel;
+import java.util.Properties;
+
+public class MavenWrapperDownloader {
+
+    /**
+     * Default URL to download the maven-wrapper.jar from, if no 'downloadUrl' is provided.
+     */
+    private static final String DEFAULT_DOWNLOAD_URL =
+            "https://repo.maven.apache.org/maven2/io/takari/maven-wrapper/0.4.2/maven-wrapper-0.4.2.jar";
+
+    /**
+     * Path to the maven-wrapper.properties file, which might contain a downloadUrl property to
+     * use instead of the default one.
+     */
+    private static final String MAVEN_WRAPPER_PROPERTIES_PATH =
+            ".mvn/wrapper/maven-wrapper.properties";
+
+    /**
+     * Path where the maven-wrapper.jar will be saved to.
+     */
+    private static final String MAVEN_WRAPPER_JAR_PATH =
+            ".mvn/wrapper/maven-wrapper.jar";
+
+    /**
+     * Name of the property which should be used to override the default download url for the wrapper.
+     */
+    private static final String PROPERTY_NAME_WRAPPER_URL = "wrapperUrl";
+
+    public static void main(String args[]) {
+        System.out.println("- Downloader started");
+        File baseDirectory = new File(args[0]);
+        System.out.println("- Using base directory: " + baseDirectory.getAbsolutePath());
+
+        // If the maven-wrapper.properties exists, read it and check if it contains a custom
+        // wrapperUrl parameter.
+        File mavenWrapperPropertyFile = new File(baseDirectory, MAVEN_WRAPPER_PROPERTIES_PATH);
+        String url = DEFAULT_DOWNLOAD_URL;
+        if (mavenWrapperPropertyFile.exists()) {
+            FileInputStream mavenWrapperPropertyFileInputStream = null;
+            try {
+                mavenWrapperPropertyFileInputStream = new FileInputStream(mavenWrapperPropertyFile);
+                Properties mavenWrapperProperties = new Properties();
+                mavenWrapperProperties.load(mavenWrapperPropertyFileInputStream);
+                url = mavenWrapperProperties.getProperty(PROPERTY_NAME_WRAPPER_URL, url);
+            } catch (IOException e) {
+                System.out.println("- ERROR loading '" + MAVEN_WRAPPER_PROPERTIES_PATH + "'");
+            } finally {
+                try {
+                    if (mavenWrapperPropertyFileInputStream != null) {
+                        mavenWrapperPropertyFileInputStream.close();
+                    }
+                } catch (IOException e) {
+                    // Ignore ...
+                }
+            }
+        }
+        System.out.println("- Downloading from: : " + url);
+
+        File outputFile = new File(baseDirectory.getAbsolutePath(), MAVEN_WRAPPER_JAR_PATH);
+        if (!outputFile.getParentFile().exists()) {
+            if (!outputFile.getParentFile().mkdirs()) {
+                System.out.println(
+                        "- ERROR creating output direcrory '" + outputFile.getParentFile().getAbsolutePath() + "'");
+            }
+        }
+        System.out.println("- Downloading to: " + outputFile.getAbsolutePath());
+        try {
+            downloadFileFromURL(url, outputFile);
+            System.out.println("Done");
+            System.exit(0);
+        } catch (Throwable e) {
+            System.out.println("- Error downloading");
+            e.printStackTrace();
+            System.exit(1);
+        }
+    }
+
+    private static void downloadFileFromURL(String urlString, File destination) throws Exception {
+        URL website = new URL(urlString);
+        ReadableByteChannel rbc;
+        rbc = Channels.newChannel(website.openStream());
+        FileOutputStream fos = new FileOutputStream(destination);
+        fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+        fos.close();
+        rbc.close();
+    }
+
+}
+</file>
+
+<file path="mvnw">
+#!/bin/sh
+# ----------------------------------------------------------------------------
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+#
+#    https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+# ----------------------------------------------------------------------------
+
+# ----------------------------------------------------------------------------
+# Maven2 Start Up Batch script
+#
+# Required ENV vars:
+# ------------------
+#   JAVA_HOME - location of a JDK home dir
+#
+# Optional ENV vars
+# -----------------
+#   M2_HOME - location of maven2's installed home dir
+#   MAVEN_OPTS - parameters passed to the Java VM when running Maven
+#     e.g. to debug Maven itself, use
+#       set MAVEN_OPTS=-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000
+#   MAVEN_SKIP_RC - flag to disable loading of mavenrc files
+# ----------------------------------------------------------------------------
+
+if [ -z "$MAVEN_SKIP_RC" ] ; then
+
+  if [ -f /etc/mavenrc ] ; then
+    . /etc/mavenrc
+  fi
+
+  if [ -f "$HOME/.mavenrc" ] ; then
+    . "$HOME/.mavenrc"
+  fi
+
+fi
+
+# OS specific support.  $var _must_ be set to either true or false.
+cygwin=false;
+darwin=false;
+mingw=false
+case "`uname`" in
+  CYGWIN*) cygwin=true ;;
+  MINGW*) mingw=true;;
+  Darwin*) darwin=true
+    # Use /usr/libexec/java_home if available, otherwise fall back to /Library/Java/Home
+    # See https://developer.apple.com/library/mac/qa/qa1170/_index.html
+    if [ -z "$JAVA_HOME" ]; then
+      if [ -x "/usr/libexec/java_home" ]; then
+        export JAVA_HOME="`/usr/libexec/java_home`"
+      else
+        export JAVA_HOME="/Library/Java/Home"
+      fi
+    fi
+    ;;
+esac
+
+if [ -z "$JAVA_HOME" ] ; then
+  if [ -r /etc/gentoo-release ] ; then
+    JAVA_HOME=`java-config --jre-home`
+  fi
+fi
+
+if [ -z "$M2_HOME" ] ; then
+  ## resolve links - $0 may be a link to maven's home
+  PRG="$0"
+
+  # need this for relative symlinks
+  while [ -h "$PRG" ] ; do
+    ls=`ls -ld "$PRG"`
+    link=`expr "$ls" : '.*-> \(.*\)$'`
+    if expr "$link" : '/.*' > /dev/null; then
+      PRG="$link"
+    else
+      PRG="`dirname "$PRG"`/$link"
+    fi
+  done
+
+  saveddir=`pwd`
+
+  M2_HOME=`dirname "$PRG"`/..
+
+  # make it fully qualified
+  M2_HOME=`cd "$M2_HOME" && pwd`
+
+  cd "$saveddir"
+  # echo Using m2 at $M2_HOME
+fi
+
+# For Cygwin, ensure paths are in UNIX format before anything is touched
+if $cygwin ; then
+  [ -n "$M2_HOME" ] &&
+    M2_HOME=`cygpath --unix "$M2_HOME"`
+  [ -n "$JAVA_HOME" ] &&
+    JAVA_HOME=`cygpath --unix "$JAVA_HOME"`
+  [ -n "$CLASSPATH" ] &&
+    CLASSPATH=`cygpath --path --unix "$CLASSPATH"`
+fi
+
+# For Mingw, ensure paths are in UNIX format before anything is touched
+if $mingw ; then
+  [ -n "$M2_HOME" ] &&
+    M2_HOME="`(cd "$M2_HOME"; pwd)`"
+  [ -n "$JAVA_HOME" ] &&
+    JAVA_HOME="`(cd "$JAVA_HOME"; pwd)`"
+  # TODO classpath?
+fi
+
+if [ -z "$JAVA_HOME" ]; then
+  javaExecutable="`which javac`"
+  if [ -n "$javaExecutable" ] && ! [ "`expr \"$javaExecutable\" : '\([^ ]*\)'`" = "no" ]; then
+    # readlink(1) is not available as standard on Solaris 10.
+    readLink=`which readlink`
+    if [ ! `expr "$readLink" : '\([^ ]*\)'` = "no" ]; then
+      if $darwin ; then
+        javaHome="`dirname \"$javaExecutable\"`"
+        javaExecutable="`cd \"$javaHome\" && pwd -P`/javac"
+      else
+        javaExecutable="`readlink -f \"$javaExecutable\"`"
+      fi
+      javaHome="`dirname \"$javaExecutable\"`"
+      javaHome=`expr "$javaHome" : '\(.*\)/bin'`
+      JAVA_HOME="$javaHome"
+      export JAVA_HOME
+    fi
+  fi
+fi
+
+if [ -z "$JAVACMD" ] ; then
+  if [ -n "$JAVA_HOME"  ] ; then
+    if [ -x "$JAVA_HOME/jre/sh/java" ] ; then
+      # IBM's JDK on AIX uses strange locations for the executables
+      JAVACMD="$JAVA_HOME/jre/sh/java"
+    else
+      JAVACMD="$JAVA_HOME/bin/java"
+    fi
+  else
+    JAVACMD="`which java`"
+  fi
+fi
+
+if [ ! -x "$JAVACMD" ] ; then
+  echo "Error: JAVA_HOME is not defined correctly." >&2
+  echo "  We cannot execute $JAVACMD" >&2
+  exit 1
+fi
+
+if [ -z "$JAVA_HOME" ] ; then
+  echo "Warning: JAVA_HOME environment variable is not set."
+fi
+
+CLASSWORLDS_LAUNCHER=org.codehaus.plexus.classworlds.launcher.Launcher
+
+# traverses directory structure from process work directory to filesystem root
+# first directory with .mvn subdirectory is considered project base directory
+find_maven_basedir() {
+
+  if [ -z "$1" ]
+  then
+    echo "Path not specified to find_maven_basedir"
+    return 1
+  fi
+
+  basedir="$1"
+  wdir="$1"
+  while [ "$wdir" != '/' ] ; do
+    if [ -d "$wdir"/.mvn ] ; then
+      basedir=$wdir
+      break
+    fi
+    # workaround for JBEAP-8937 (on Solaris 10/Sparc)
+    if [ -d "${wdir}" ]; then
+      wdir=`cd "$wdir/.."; pwd`
+    fi
+    # end of workaround
+  done
+  echo "${basedir}"
+}
+
+# concatenates all lines of a file
+concat_lines() {
+  if [ -f "$1" ]; then
+    echo "$(tr -s '\n' ' ' < "$1")"
+  fi
+}
+
+BASE_DIR=`find_maven_basedir "$(pwd)"`
+if [ -z "$BASE_DIR" ]; then
+  exit 1;
+fi
+
+##########################################################################################
+# Extension to allow automatically downloading the maven-wrapper.jar from Maven-central
+# This allows using the maven wrapper in projects that prohibit checking in binary data.
+##########################################################################################
+if [ -r "$BASE_DIR/.mvn/wrapper/maven-wrapper.jar" ]; then
+    if [ "$MVNW_VERBOSE" = true ]; then
+      echo "Found .mvn/wrapper/maven-wrapper.jar"
+    fi
+else
+    if [ "$MVNW_VERBOSE" = true ]; then
+      echo "Couldn't find .mvn/wrapper/maven-wrapper.jar, downloading it ..."
+    fi
+    jarUrl="https://repo.maven.apache.org/maven2/io/takari/maven-wrapper/0.4.2/maven-wrapper-0.4.2.jar"
+    while IFS="=" read key value; do
+      case "$key" in (wrapperUrl) jarUrl="$value"; break ;;
+      esac
+    done < "$BASE_DIR/.mvn/wrapper/maven-wrapper.properties"
+    if [ "$MVNW_VERBOSE" = true ]; then
+      echo "Downloading from: $jarUrl"
+    fi
+    wrapperJarPath="$BASE_DIR/.mvn/wrapper/maven-wrapper.jar"
+
+    if command -v wget > /dev/null; then
+        if [ "$MVNW_VERBOSE" = true ]; then
+          echo "Found wget ... using wget"
+        fi
+        wget "$jarUrl" -O "$wrapperJarPath"
+    elif command -v curl > /dev/null; then
+        if [ "$MVNW_VERBOSE" = true ]; then
+          echo "Found curl ... using curl"
+        fi
+        curl -o "$wrapperJarPath" "$jarUrl"
+    else
+        if [ "$MVNW_VERBOSE" = true ]; then
+          echo "Falling back to using Java to download"
+        fi
+        javaClass="$BASE_DIR/.mvn/wrapper/MavenWrapperDownloader.java"
+        if [ -e "$javaClass" ]; then
+            if [ ! -e "$BASE_DIR/.mvn/wrapper/MavenWrapperDownloader.class" ]; then
+                if [ "$MVNW_VERBOSE" = true ]; then
+                  echo " - Compiling MavenWrapperDownloader.java ..."
+                fi
+                # Compiling the Java class
+                ("$JAVA_HOME/bin/javac" "$javaClass")
+            fi
+            if [ -e "$BASE_DIR/.mvn/wrapper/MavenWrapperDownloader.class" ]; then
+                # Running the downloader
+                if [ "$MVNW_VERBOSE" = true ]; then
+                  echo " - Running MavenWrapperDownloader.java ..."
+                fi
+                ("$JAVA_HOME/bin/java" -cp .mvn/wrapper MavenWrapperDownloader "$MAVEN_PROJECTBASEDIR")
+            fi
+        fi
+    fi
+fi
+##########################################################################################
+# End of extension
+##########################################################################################
+
+export MAVEN_PROJECTBASEDIR=${MAVEN_BASEDIR:-"$BASE_DIR"}
+if [ "$MVNW_VERBOSE" = true ]; then
+  echo $MAVEN_PROJECTBASEDIR
+fi
+MAVEN_OPTS="$(concat_lines "$MAVEN_PROJECTBASEDIR/.mvn/jvm.config") $MAVEN_OPTS"
+
+# For Cygwin, switch paths to Windows format before running java
+if $cygwin; then
+  [ -n "$M2_HOME" ] &&
+    M2_HOME=`cygpath --path --windows "$M2_HOME"`
+  [ -n "$JAVA_HOME" ] &&
+    JAVA_HOME=`cygpath --path --windows "$JAVA_HOME"`
+  [ -n "$CLASSPATH" ] &&
+    CLASSPATH=`cygpath --path --windows "$CLASSPATH"`
+  [ -n "$MAVEN_PROJECTBASEDIR" ] &&
+    MAVEN_PROJECTBASEDIR=`cygpath --path --windows "$MAVEN_PROJECTBASEDIR"`
+fi
+
+WRAPPER_LAUNCHER=org.apache.maven.wrapper.MavenWrapperMain
+
+exec "$JAVACMD" \
+  $MAVEN_OPTS \
+  -classpath "$MAVEN_PROJECTBASEDIR/.mvn/wrapper/maven-wrapper.jar" \
+  "-Dmaven.home=${M2_HOME}" "-Dmaven.multiModuleProjectDirectory=${MAVEN_PROJECTBASEDIR}" \
+  ${WRAPPER_LAUNCHER} $MAVEN_CONFIG "$@"
+</file>
+
+<file path="mvnw.cmd">
+@REM ----------------------------------------------------------------------------
+@REM Licensed to the Apache Software Foundation (ASF) under one
+@REM or more contributor license agreements.  See the NOTICE file
+@REM distributed with this work for additional information
+@REM regarding copyright ownership.  The ASF licenses this file
+@REM to you under the Apache License, Version 2.0 (the
+@REM "License"); you may not use this file except in compliance
+@REM with the License.  You may obtain a copy of the License at
+@REM
+@REM    https://www.apache.org/licenses/LICENSE-2.0
+@REM
+@REM Unless required by applicable law or agreed to in writing,
+@REM software distributed under the License is distributed on an
+@REM "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+@REM KIND, either express or implied.  See the License for the
+@REM specific language governing permissions and limitations
+@REM under the License.
+@REM ----------------------------------------------------------------------------
+
+@REM ----------------------------------------------------------------------------
+@REM Maven2 Start Up Batch script
+@REM
+@REM Required ENV vars:
+@REM JAVA_HOME - location of a JDK home dir
+@REM
+@REM Optional ENV vars
+@REM M2_HOME - location of maven2's installed home dir
+@REM MAVEN_BATCH_ECHO - set to 'on' to enable the echoing of the batch commands
+@REM MAVEN_BATCH_PAUSE - set to 'on' to wait for a key stroke before ending
+@REM MAVEN_OPTS - parameters passed to the Java VM when running Maven
+@REM     e.g. to debug Maven itself, use
+@REM set MAVEN_OPTS=-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000
+@REM MAVEN_SKIP_RC - flag to disable loading of mavenrc files
+@REM ----------------------------------------------------------------------------
+
+@REM Begin all REM lines with '@' in case MAVEN_BATCH_ECHO is 'on'
+@echo off
+@REM set title of command window
+title %0
+@REM enable echoing my setting MAVEN_BATCH_ECHO to 'on'
+@if "%MAVEN_BATCH_ECHO%" == "on"  echo %MAVEN_BATCH_ECHO%
+
+@REM set %HOME% to equivalent of $HOME
+if "%HOME%" == "" (set "HOME=%HOMEDRIVE%%HOMEPATH%")
+
+@REM Execute a user defined script before this one
+if not "%MAVEN_SKIP_RC%" == "" goto skipRcPre
+@REM check for pre script, once with legacy .bat ending and once with .cmd ending
+if exist "%HOME%\mavenrc_pre.bat" call "%HOME%\mavenrc_pre.bat"
+if exist "%HOME%\mavenrc_pre.cmd" call "%HOME%\mavenrc_pre.cmd"
+:skipRcPre
+
+@setlocal
+
+set ERROR_CODE=0
+
+@REM To isolate internal variables from possible post scripts, we use another setlocal
+@setlocal
+
+@REM ==== START VALIDATION ====
+if not "%JAVA_HOME%" == "" goto OkJHome
+
+echo.
+echo Error: JAVA_HOME not found in your environment. >&2
+echo Please set the JAVA_HOME variable in your environment to match the >&2
+echo location of your Java installation. >&2
+echo.
+goto error
+
+:OkJHome
+if exist "%JAVA_HOME%\bin\java.exe" goto init
+
+echo.
+echo Error: JAVA_HOME is set to an invalid directory. >&2
+echo JAVA_HOME = "%JAVA_HOME%" >&2
+echo Please set the JAVA_HOME variable in your environment to match the >&2
+echo location of your Java installation. >&2
+echo.
+goto error
+
+@REM ==== END VALIDATION ====
+
+:init
+
+@REM Find the project base dir, i.e. the directory that contains the folder ".mvn".
+@REM Fallback to current working directory if not found.
+
+set MAVEN_PROJECTBASEDIR=%MAVEN_BASEDIR%
+IF NOT "%MAVEN_PROJECTBASEDIR%"=="" goto endDetectBaseDir
+
+set EXEC_DIR=%CD%
+set WDIR=%EXEC_DIR%
+:findBaseDir
+IF EXIST "%WDIR%"\.mvn goto baseDirFound
+cd ..
+IF "%WDIR%"=="%CD%" goto baseDirNotFound
+set WDIR=%CD%
+goto findBaseDir
+
+:baseDirFound
+set MAVEN_PROJECTBASEDIR=%WDIR%
+cd "%EXEC_DIR%"
+goto endDetectBaseDir
+
+:baseDirNotFound
+set MAVEN_PROJECTBASEDIR=%EXEC_DIR%
+cd "%EXEC_DIR%"
+
+:endDetectBaseDir
+
+IF NOT EXIST "%MAVEN_PROJECTBASEDIR%\.mvn\jvm.config" goto endReadAdditionalConfig
+
+@setlocal EnableExtensions EnableDelayedExpansion
+for /F "usebackq delims=" %%a in ("%MAVEN_PROJECTBASEDIR%\.mvn\jvm.config") do set JVM_CONFIG_MAVEN_PROPS=!JVM_CONFIG_MAVEN_PROPS! %%a
+@endlocal & set JVM_CONFIG_MAVEN_PROPS=%JVM_CONFIG_MAVEN_PROPS%
+
+:endReadAdditionalConfig
+
+SET MAVEN_JAVA_EXE="%JAVA_HOME%\bin\java.exe"
+set WRAPPER_JAR="%MAVEN_PROJECTBASEDIR%\.mvn\wrapper\maven-wrapper.jar"
+set WRAPPER_LAUNCHER=org.apache.maven.wrapper.MavenWrapperMain
+
+set DOWNLOAD_URL="https://repo.maven.apache.org/maven2/io/takari/maven-wrapper/0.4.2/maven-wrapper-0.4.2.jar"
+FOR /F "tokens=1,2 delims==" %%A IN (%MAVEN_PROJECTBASEDIR%\.mvn\wrapper\maven-wrapper.properties) DO (
+	IF "%%A"=="wrapperUrl" SET DOWNLOAD_URL=%%B 
+)
+
+@REM Extension to allow automatically downloading the maven-wrapper.jar from Maven-central
+@REM This allows using the maven wrapper in projects that prohibit checking in binary data.
+if exist %WRAPPER_JAR% (
+    echo Found %WRAPPER_JAR%
+) else (
+    echo Couldn't find %WRAPPER_JAR%, downloading it ...
+	echo Downloading from: %DOWNLOAD_URL%
+    powershell -Command "(New-Object Net.WebClient).DownloadFile('%DOWNLOAD_URL%', '%WRAPPER_JAR%')"
+    echo Finished downloading %WRAPPER_JAR%
+)
+@REM End of extension
+
+%MAVEN_JAVA_EXE% %JVM_CONFIG_MAVEN_PROPS% %MAVEN_OPTS% %MAVEN_DEBUG_OPTS% -classpath %WRAPPER_JAR% "-Dmaven.multiModuleProjectDirectory=%MAVEN_PROJECTBASEDIR%" %WRAPPER_LAUNCHER% %MAVEN_CONFIG% %*
+if ERRORLEVEL 1 goto error
+goto end
+
+:error
+set ERROR_CODE=1
+
+:end
+@endlocal & set ERROR_CODE=%ERROR_CODE%
+
+if not "%MAVEN_SKIP_RC%" == "" goto skipRcPost
+@REM check for post script, once with legacy .bat ending and once with .cmd ending
+if exist "%HOME%\mavenrc_post.bat" call "%HOME%\mavenrc_post.bat"
+if exist "%HOME%\mavenrc_post.cmd" call "%HOME%\mavenrc_post.cmd"
+:skipRcPost
+
+@REM pause the script if MAVEN_BATCH_PAUSE is set to 'on'
+if "%MAVEN_BATCH_PAUSE%" == "on" pause
+
+if "%MAVEN_TERMINATE_CMD%" == "on" exit %ERROR_CODE%
+
+exit /B %ERROR_CODE%
+</file>
+
+<file path="pom.xml">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.6.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.vargas</groupId>
+    <artifactId>vargas</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>vargas</name>
+    <description>Demo project for Spring Boot</description>
+
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/classes/static/</outputDirectory >
+                            <resources>
+                                <resource>
+                                    <directory>../vargas-app/dist/vargas-app</directory>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.3</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals><goal>copy</goal></goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>com.github.jsimone</groupId>
+                                    <artifactId>webapp-runner</artifactId>
+                                    <version>8.5.11.3</version>
+                                    <destFileName>webapp-runner.jar</destFileName>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+
+    </build>
+
+</project>
+</file>
+
+<file path="src/main/java/com/vargas/food/controller/CartController.java">
+package com.vargas.food.controller;
+
+import com.vargas.food.dao.CartDaoImpl;
+import com.vargas.food.model.Cart;
+import com.vargas.food.model.NewCart;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+
+@RestController
+@CrossOrigin
+public class CartController {
+
+    @Autowired
+    CartDaoImpl cartDao;
+
+
+    @PostMapping("/cart")
+    public int getTotal(@RequestBody NewCart[] cart, Model model){
+        cartDao.saveToCart(cart);
+        return cartDao.claculateTotal(cart);
+    }
+
+    @RequestMapping("/changeDB")
+    public boolean changeDB(){
+        cartDao.updateDB();
+        return true;
+    }
+
+    @PostMapping("/addToCart")
+    public NewCart[] increaseQuantity(@RequestBody NewCart[] cart, Model model){
+        cartDao.addItems(cart);
+        return cart;
+    }
+
+    @PostMapping("/addNewItem")
+    public boolean addNewItem(@RequestParam("file") MultipartFile file, @RequestParam("newFoodItem") String newFoodData) throws IOException {
+        return cartDao.addNewItem(file,newFoodData);
+    }
+
+
+    @PostMapping("/addNewItemUrl")
+    public boolean addNewItemByUrl(@RequestParam("newFoodItem") String newFoodData) throws IOException {
+        return cartDao.addNewItemWithUrl(newFoodData);
+    }
+
+    @PostMapping("/checkItemId")
+    public boolean checkItemId(@RequestBody String itemId, Model model){
+        return !cartDao.itemIdAvailable(itemId);
+    }
+}
+</file>
+
+<file path="src/main/java/com/vargas/food/controller/ContactController.java">
+package com.vargas.food.controller;
+
+import com.vargas.food.dao.ContactDaoImpl;
+import com.vargas.food.model.Contact;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@CrossOrigin
+public class ContactController {
+
+    @Autowired
+    ContactDaoImpl contactDao;
+
+    @PostMapping("/contact")
+    public boolean contactUs(@RequestBody Contact contact, Model model){
+        return contactDao.saveMessage(contact);
+    }
+}
+</file>
+
+<file path="src/main/java/com/vargas/food/controller/FoodController.java">
+package com.vargas.food.controller;
+
+import com.vargas.food.dao.FoodDaoImpl;
+import com.vargas.food.model.Food;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import java.util.List;
+
+
+@RestController
+@CrossOrigin
+public class FoodController {
+
+    @Autowired
+    FoodDaoImpl foodDao;
+
+    @RequestMapping(value = "/menu")
+    public List<Food> getMenu(Model model) {
+        List<Food> foodItems ;
+        foodItems = foodDao.getFoodList();
+        return foodItems;
+    }
+
+
+}
+</file>
+
+<file path="src/main/java/com/vargas/food/controller/LoginController.java">
+package com.vargas.food.controller;
+
+import com.vargas.food.dao.UserDaoImpl;
+import com.vargas.food.model.Login;
+import com.vargas.food.model.User;
+import com.vargas.food.utility.StrongAES;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@CrossOrigin
+public class LoginController {
+
+    @Autowired
+    private UserDaoImpl userDao;
+
+
+    @RequestMapping("/login")
+    public Login showLogin() {
+        return new Login();
+    }
+
+    @PostMapping("/login")
+    public User loginProcess(@RequestBody Login login, Model model) {
+        User user = null;
+        user = userDao.validateUser(login);
+        if(user!=null)
+        user.setPassword(null);
+        return user;
+    }
+
+    @RequestMapping("/xx")
+    private String xx(){
+        return new StrongAES().encrypt("");
+    }
+
+}
+</file>
+
+<file path="src/main/java/com/vargas/food/controller/RegistrationController.java">
+package com.vargas.food.controller;
+import com.vargas.food.dao.UserDaoImpl;
+import com.vargas.food.model.User;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@CrossOrigin()
+public class RegistrationController {
+
+    @Autowired
+    private UserDaoImpl userDao;
+
+    @RequestMapping("/api/register")
+    public User showRegister() {
+        return new User();
+    }
+
+    @PostMapping("/register")
+    public User addUser(@RequestBody User user, Model model) {
+        System.out.println(user.toString());
+        userDao.register(user);
+        return user;
+    }
+
+    @PostMapping("/checkUserName")
+    public boolean checkAvailability(@RequestBody String username, Model model){
+        return userDao.usernameExists(username);
+    }
+}
+</file>
+
+<file path="src/main/java/com/vargas/food/dao/CartDao.java">
+package com.vargas.food.dao;
+
+import com.vargas.food.model.Cart;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface CartDao extends JpaRepository<Cart,Integer> {
+}
+</file>
+
+<file path="src/main/java/com/vargas/food/dao/CartDaoImpl.java">
+package com.vargas.food.dao;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.vargas.food.model.Cart;
+import com.vargas.food.model.Food;
+import com.vargas.food.model.NewCart;
+import com.vargas.food.model.NewFood;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+
+@Service
+public class CartDaoImpl{
+
+    @Autowired
+    CartDao cartDao;
+
+    @Autowired
+    FoodDao foodDao;
+
+    @Value("${fileStorage}")
+    private String storagePath;
+
+    public void saveToCart(NewCart[] newCarts){
+        cartDao.deleteAll();
+        cartDao.flush();
+        Cart cart= new Cart(1,0,0,0,0,0);
+        cart.setQuantity1(newCarts[0].getQuantity());
+        cart.setQuantity2(newCarts[1].getQuantity());
+        cart.setQuantity3(newCarts[2].getQuantity());
+        if(newCarts.length>3)
+            cart.setQuantity4(newCarts[3].getQuantity());
+        if(newCarts.length>4)
+        cart.setQuantity5(newCarts[4].getQuantity());
+        if(newCarts.length>5)
+        cart.setQuantity6(newCarts[6].getQuantity());
+        cartDao.save(cart);
+    }
+
+    public void updateDB(){
+        List<Cart> carts =cartDao.findAll();
+        Cart cart = carts.get(1);
+        List<Food> foods = foodDao.findAll();
+        foods.get(0).setQuantity(foods.get(0).getQuantity()-cart.getQuantity1());
+        foods.get(1).setQuantity(foods.get(1).getQuantity()-cart.getQuantity2());
+        foods.get(2).setQuantity(foods.get(2).getQuantity()-cart.getQuantity3());
+        if(foods.size()>3)
+        foods.get(3).setQuantity(foods.get(3).getQuantity()-cart.getQuantity4());
+        if(foods.size()>4)
+            foods.get(4).setQuantity(foods.get(4).getQuantity()-cart.getQuantity5());
+        if(foods.size()>5)
+            foods.get(5).setQuantity(foods.get(5).getQuantity()-cart.getQuantity6());
+        foodDao.saveAll(foods);
+    }
+
+    public List<Cart> getAllCart(){
+        return cartDao.findAll();
+    }
+
+    public void addItems(NewCart[] cart){
+        List<Food> foods = foodDao.findAll();
+        for(int i=0;i<foods.size();i++){
+            foods.get(i).setQuantity(foods.get(i).getQuantity()+cart[i].getQuantity());
+        }
+        foodDao.saveAll(foods);
+    }
+
+    public boolean addNewItem(MultipartFile file, String newFoodData) throws IOException {
+        NewFood newFood = new ObjectMapper().readValue(newFoodData,NewFood.class);
+        if(!file.isEmpty())
+        if(saveFileToAssets(file))
+        {
+            foodDao.save(new Food(newFood.getId(),newFood.getName(),newFood.getPrice(),newFood.getQuantityAvailable(),"/assets/"+file.getOriginalFilename(),"",""));
+//            foodDao.save(new Food(newFood.getId(),newFood.getName(),newFood.getPrice(),newFood.getQuantityAvailable(),"\\"+file.getOriginalFilename(),"",""));
+        }
+        return true;
+    }
+
+    public boolean addNewItemWithUrl(String newFoodData) throws IOException {
+        NewFood newFood = new ObjectMapper().readValue(newFoodData,NewFood.class);
+        foodDao.save(new Food(newFood.getId(),newFood.getName(),newFood.getPrice(),newFood.getQuantityAvailable(),newFood.getFileDataF(),"",""));
+        return true;
+    }
+
+    private boolean saveFileToAssets(MultipartFile file) throws IOException {
+        Path filepath = Paths.get(storagePath, file.getOriginalFilename());
+        file.transferTo(filepath);
+        return true;
+    }
+
+    public int claculateTotal(NewCart[] newCart){
+        int total=0;
+        List<Food> foods = foodDao.findAll();
+
+        for(int i=0;i<foods.size();i++)
+        {
+            total+=foods.get(i).getPrice()*newCart[i].getQuantity();
+        }
+        return total;
+    }
+
+    public boolean itemIdAvailable(String itemId) {
+        return foodDao.findById(itemId).isPresent();
+    }
+}
+</file>
+
+<file path="src/main/java/com/vargas/food/dao/ContactDao.java">
+package com.vargas.food.dao;
+
+import com.vargas.food.model.Contact;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ContactDao extends JpaRepository<Contact,Integer> {
+}
+</file>
+
+<file path="src/main/java/com/vargas/food/dao/ContactDaoImpl.java">
+package com.vargas.food.dao;
+
+import com.vargas.food.model.Contact;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class ContactDaoImpl{
+
+    @Autowired
+    ContactDao contactDao;
+
+    public boolean saveMessage(Contact contact){
+        contactDao.save(contact);
+        return true;
+    }
+}
+</file>
+
+<file path="src/main/java/com/vargas/food/dao/FoodDao.java">
+package com.vargas.food.dao;
+
+import com.vargas.food.model.Food;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+
+public interface FoodDao extends JpaRepository<Food,String> {
+
+}
+</file>
+
+<file path="src/main/java/com/vargas/food/dao/FoodDaoImpl.java">
+package com.vargas.food.dao;
+
+import com.vargas.food.model.Food;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import java.util.List;
+
+@Service
+public class FoodDaoImpl {
+
+    @Autowired
+    private FoodDao foodDao;
+
+
+    public List<Food> getFoodList(){
+        List<Food> food;
+        food = foodDao.findAll();
+        return food;
+    }
+
+    public Food validateFoodInfo(String productId){
+        Food food = null;
+        food = foodDao.findById(productId).get();
+        return food;
+    }
+}
+</file>
+
+<file path="src/main/java/com/vargas/food/dao/UserDao.java">
+package com.vargas.food.dao;
+
+import com.vargas.food.model.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UserDao extends JpaRepository<User,String> {
+}
+</file>
+
+<file path="src/main/java/com/vargas/food/dao/UserDaoImpl.java">
+package com.vargas.food.dao;
+
+import com.vargas.food.model.Login;
+import com.vargas.food.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserDaoImpl{
+
+    @Autowired
+    private UserDao userDao;
+
+
+    public void register(User user) {
+        userDao.save(user);
+    }
+
+    public User validateUser(Login login) {
+        User user = null;
+        if (userDao.findById(login.getUsername()).isPresent()) {
+            user = userDao.findById(login.getUsername()).get();
+            if(!user.getPassword().equals(login.getPassword()))
+                user=null;
+        }
+        return user;
+    }
+
+    public Boolean usernameExists(String username){
+       return userDao.findById(username).isPresent();
+    }
+
+}
+</file>
+
+<file path="src/main/java/com/vargas/food/model/Cart.java">
+package com.vargas.food.model;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class Cart {
+
+    @Id
+    private int quantity1;
+    private int quantity2;
+    private int quantity3;
+    private int quantity4;
+    private int quantity5;
+    private int quantity6;
+
+    public Cart(){}
+
+    public Cart(int quantity1, int quantity2, int quantity3, int quantity4, int quantity5, int quantity6) {
+        this.quantity1 = quantity1;
+        this.quantity2 = quantity2;
+        this.quantity3 = quantity3;
+        this.quantity4 = quantity4;
+        this.quantity5 = quantity5;
+        this.quantity6 = quantity6;
+    }
+
+    public int getQuantity1() {
+        return quantity1;
+    }
+
+    public void setQuantity1(int quantity1) {
+        this.quantity1 = quantity1;
+    }
+
+    public int getQuantity2() {
+        return quantity2;
+    }
+
+    public void setQuantity2(int quantity2) {
+        this.quantity2 = quantity2;
+    }
+
+    public int getQuantity3() {
+        return quantity3;
+    }
+
+    public void setQuantity3(int quantity3) {
+        this.quantity3 = quantity3;
+    }
+
+    public int getQuantity4() {
+        return quantity4;
+    }
+
+    public void setQuantity4(int quantity4) {
+        this.quantity4 = quantity4;
+    }
+
+    public int getQuantity5() {
+        return quantity5;
+    }
+
+    public void setQuantity5(int quantity5) {
+        this.quantity5 = quantity5;
+    }
+
+    public int getQuantity6() {
+        return quantity6;
+    }
+
+    public void setQuantity6(int quantity6) {
+        this.quantity6 = quantity6;
+    }
+
+    @Override
+    public String toString() {
+        return "Cart{" +
+                "quantity1=" + quantity1 +
+                ", quantity2=" + quantity2 +
+                ", quantity3=" + quantity3 +
+                ", quantity4=" + quantity4 +
+                ", quantity5=" + quantity5 +
+                ", quantity6=" + quantity6 +
+                '}';
+    }
+}
+</file>
+
+<file path="src/main/java/com/vargas/food/model/Contact.java">
+package com.vargas.food.model;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class Contact {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private String name;
+    private String email;
+    private String message;
+
+    public Contact(){}
+
+    public Contact(String name, String email, String message) {
+        this.name = name;
+        this.email = email;
+        this.message = message;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    @Override
+    public String toString() {
+        return "Contact{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", message='" + message + '\'' +
+                '}';
+    }
+}
+</file>
+
+<file path="src/main/java/com/vargas/food/model/Food.java">
+package com.vargas.food.model;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class Food {
+
+    @Id
+    private String id;
+    private String item;
+    private int price;
+    private int quantity;
+    private String url;
+    private String formID;
+    private String cartID;
+
+    public Food(){}
+
+    public Food(String id, String item, int price,int quantity, String url, String formID, String cartID) {
+        this.id = id;
+        this.item = item;
+        this.price = price;
+        this.quantity=quantity;
+        this.url=url;
+        this.formID=formID;
+        this.cartID=cartID;
+    }
+
+    public String getFormID() {
+        return formID;
+    }
+
+    public void setFormID(String formID) {
+        this.formID = formID;
+    }
+
+    public String getCartID() {
+        return cartID;
+    }
+
+    public void setCartID(String cartID) {
+        this.cartID = cartID;
+    }
+
+    public String getUrl(){
+        return url;
+    }
+
+    public void setUrl(String url){
+        this.url=url;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getItem() {
+        return item;
+    }
+
+    public void setItem(String item) {
+        this.item = item;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    @Override
+    public String toString() {
+        return "Food{" +
+                "id='" + id + '\'' +
+                ", item='" + item + '\'' +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                ", url='" + url + '\'' +
+                ", formID='" + formID + '\'' +
+                ", cartID='" + cartID + '\'' +
+                '}';
+    }
+}
+</file>
+
+<file path="src/main/java/com/vargas/food/model/Login.java">
+package com.vargas.food.model;
+
+public class Login {
+
+    private String username;
+    private String password;
+
+    public Login(){}
+
+    public Login(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "Login{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
+}
+</file>
+
+<file path="src/main/java/com/vargas/food/model/NewCart.java">
+package com.vargas.food.model;
+
+public class NewCart {
+
+    private int quantity;
+
+    public NewCart(){}
+
+    public NewCart(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    @Override
+    public String toString() {
+        return "NewCart{" +
+                "quantity=" + quantity +
+                '}';
+    }
+}
+</file>
+
+<file path="src/main/java/com/vargas/food/model/NewFood.java">
+package com.vargas.food.model;
+
+public class NewFood {
+
+   private String id;
+   private String name;
+   private int price;
+   private int quantityAvailable;
+   private String fileDataF;
+
+   public NewFood(){}
+
+    public NewFood(String id, String name, int price, int quantityAvailable, String fileDataF) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.quantityAvailable = quantityAvailable;
+        this.fileDataF = fileDataF;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public int getQuantityAvailable() {
+        return quantityAvailable;
+    }
+
+    public void setQuantityAvailable(int quantityAvailable) {
+        this.quantityAvailable = quantityAvailable;
+    }
+
+    public String getFileDataF() {
+        return fileDataF;
+    }
+
+    public void setFileDataF(String fileDataF) {
+        this.fileDataF = fileDataF;
+    }
+
+    @Override
+    public String toString() {
+        return "NewFood{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", quantityAvailable=" + quantityAvailable +
+                ", fileDataF=" + fileDataF +
+                '}';
+    }
+}
+</file>
+
+<file path="src/main/java/com/vargas/food/model/User.java">
+package com.vargas.food.model;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class User {
+
+    @Id
+    private String username;
+    private String password;
+    private String firstname;
+    private String lastname;
+    private String email;
+    private String address;
+    private int phone;
+    private boolean merchant;
+
+    public User() {
+
+    }
+
+    public User(String username, String password, String firstname, String lastname, String email, String address, int phone,
+                boolean merchant) {
+        this.username = username;
+        this.password = password;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.address = address;
+        this.phone = phone;
+        this.merchant=merchant;
+    }
+
+    public boolean isMerchant() {
+        return merchant;
+    }
+
+    public void setMerchant(boolean merchant) {
+        this.merchant = merchant;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        System.out.println("username: " + username);
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        System.out.println("firstname: " + firstname);
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        System.out.println("lastname: " + lastname);
+        this.lastname = lastname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public int getPhone() {
+        return phone;
+    }
+
+    public void setPhone(int phone) {
+        this.phone = phone;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", email='" + email + '\'' +
+                ", address='" + address + '\'' +
+                ", phone=" + phone +
+                ", merchant=" + merchant +
+                '}';
+    }
+}
+</file>
+
+<file path="src/main/java/com/vargas/food/utility/StrongAES.java">
+package com.vargas.food.utility;
+
+import org.springframework.beans.factory.annotation.Value;
+
+public class StrongAES {
+
+    @Value("${AES.Key}")
+    private String AESKey;
+
+    public String encrypt(String password){
+        return this.AESKey;
+    }
+}
+
+class Check{
+    public static void main(String[] args) {
+        StrongAES strongAES = new StrongAES();
+        System.out.println(strongAES.encrypt("aman"));
+    }
+}
+</file>
+
+<file path="src/main/java/com/vargas/food/vargasApplication.java">
+package com.vargas.food;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class vargasApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(vargasApplication.class, args);
+    }
+
+}
+</file>
+
+<file path="src/main/resources/application.properties">
+spring.jpa.hibernate.ddl-auto=none
+#spring.datasource.url=jdbc:mysql://remotemysql.com:3306/EaMpDUcsAo
+#spring.datasource.username=EaMpDUcsAo
+#spring.datasource.password=SOuMfjwCas
+#server.port=${PORT:5000}
+AES.Key=Bar12345Bar12345
+#host.docker.internal
+spring.datasource.url=jdbc:mysql://localhost:3306/myusers?useSSL=false
+spring.datasource.username=root
+spring.datasource.password=root
+
+#fileStorage=C:\\Users\\amank\\Desktop\\vargasX\\vargas-app\\src\\assets\\images\\
+fileStorage=/assets
+</file>
+
+<file path="src/main/resources/dbScripts/ddl.sql">
+CREATE DATABASE IF NOT EXISTS myusers;
+USE myusers;
+
+DROP TABLE IF EXISTS `myusers`.`user`;
+CREATE TABLE `myusers`.`user`
+(
+  `username`  VARCHAR(45) NOT NULL,
+  `password`  VARCHAR(45) NULL,
+  `firstname` VARCHAR(45) NOT NULL,
+  `lastname`  VARCHAR(45) NULL,
+  `email`     VARCHAR(45) NULL,
+  `address`   VARCHAR(45) NULL,
+  `phone`     INT         NULL,
+  PRIMARY KEY (`username`)
+);
+
+CREATE TABLE `myusers`.`food` (
+   `id` VARCHAR(45) NOT NULL,
+   `item` VARCHAR(45) NOT NULL,
+   `prince` INT NOT NULL,
+   `quantity` INT NOT NULL,
+   `url` VARCHAR(150) NOT NULL ,
+   `formID` VARCHAR(50) NOT NULL ,
+   `cartID` VARCHAR(50) NOT NULL ,
+   PRIMARY KEY (`id`));
+
+CREATE TABLE 'myusers'.'cart' (
+  'quantity1' INT NOT NULL ,
+  'quantity2' INT NOT NULL ,
+  'quantity3' INT NOT NULL ,
+  PRIMARY KEY ('quantity1')
+);
+</file>
+
+<file path="src/test/java/com/vargas/food/ApiTests.java">
+package com.vargas.food;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.vargas.food.controller.CartController;
+import com.vargas.food.controller.FoodController;
+import com.vargas.food.controller.LoginController;
+import com.vargas.food.controller.RegistrationController;
+import com.vargas.food.dao.CartDaoImpl;
+import com.vargas.food.dao.FoodDaoImpl;
+import com.vargas.food.dao.UserDao;
+import com.vargas.food.dao.UserDaoImpl;
+import com.vargas.food.model.Cart;
+import com.vargas.food.model.Login;
+import com.vargas.food.model.User;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+@RunWith(SpringRunner.class)
+@WebMvcTest({LoginController.class,RegistrationController.class, FoodController.class, CartController.class})
+public class ApiTests {
+    @Autowired
+    private MockMvc mvc;
+
+    @MockBean
+    UserDao userDao;
+
+    @MockBean
+    UserDaoImpl userDaoImpl;
+
+    @MockBean
+    FoodDaoImpl foodDao;
+
+    @MockBean
+    CartDaoImpl cartDao;
+
+    /*@Test
+    public void postLoginAPI() throws Exception
+    {
+        mvc.perform( MockMvcRequestBuilders
+                .post("/login")
+                .content(asJsonString(new Login("amank","abcd1234")))
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+    }
+*/
+    @Test
+    public void getLoginApi() throws Exception{
+        mvc.perform(MockMvcRequestBuilders
+                    .get("/login")
+                    .accept(MediaType.APPLICATION_JSON))
+                    .andDo(print())
+                    .andExpect(status().isOk());
+    }
+
+    @Test
+    public void getRegisterApi() throws Exception{
+        mvc.perform(MockMvcRequestBuilders
+                .get("/api/register")
+                .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void postRegisterAPI() throws Exception
+    {
+        mvc.perform( MockMvcRequestBuilders
+                .post("/register")
+                .content(asJsonString(new User("aman","abcd1234","bbbb","bbbb","b@gmail.com","bbbb",1234,true)))
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void postCheckUsernameApi() throws Exception{
+        mvc.perform( MockMvcRequestBuilders
+                .post("/checkUserName")
+                .content("amank").contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
+    }
+
+    @Test
+    public void getMenuApi() throws Exception{
+        mvc.perform(MockMvcRequestBuilders
+                .get("/menu")
+                .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk());
+    }
+
+    /*@Test
+    public void getTotalCartApi() throws Exception{
+        mvc.perform( MockMvcRequestBuilders
+                .post("/cart")
+                .content(asJsonString(new Cart(1,1,1,1,1,1)))
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+    }*/
+
+    @Test
+    public void getChangeDBCartApi() throws Exception{
+        mvc.perform(MockMvcRequestBuilders
+                .get("/changeDB")
+                .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk());
+    }
+
+    public static String asJsonString(final Object obj) {
+        try {
+            final ObjectMapper mapper = new ObjectMapper();
+            final String jsonContent = mapper.writeValueAsString(obj);
+            return jsonContent;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+}
+</file>
+
+<file path="src/test/java/com/vargas/food/vargasApplicationTests.java">
+package com.vargas.food;
+
+import com.vargas.food.dao.CartDaoImpl;
+import com.vargas.food.dao.FoodDaoImpl;
+import com.vargas.food.dao.UserDao;
+import com.vargas.food.dao.UserDaoImpl;
+import com.vargas.food.model.Cart;
+import com.vargas.food.model.Food;
+import com.vargas.food.model.Login;
+import com.vargas.food.model.User;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+
+import java.util.List;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class vargasApplicationTests {
+
+    @Autowired
+    UserDao userDao;
+
+    @Autowired
+    UserDaoImpl userDaoImpl;
+
+    @Autowired
+    FoodDaoImpl foodDao;
+
+    @Autowired
+    CartDaoImpl cartDao;
+
+    @Test
+    public void contextLoads() {
+        Login login = new Login();
+        login.setUsername("amank");
+        login.setPassword("abcd1234");
+
+        User user = userDaoImpl.validateUser(login);
+        Assert.assertEquals("Aman",user.getFirstname());
+        Assert.assertEquals("Kumar",user.getLastname());
+        Assert.assertEquals("aman@gmail.com",user.getEmail());
+        Assert.assertEquals(9585418,user.getPhone());
+    }
+
+    @Test
+    public void checkFoodTable(){
+        Food food = new Food();
+        food.setId("abc");
+        Food food1 = foodDao.validateFoodInfo(food.getId());
+        Assert.assertEquals("Coffee",food1.getItem());
+        Assert.assertEquals(50,food1.getPrice());
+    }
+
+    @Test
+    public void checkCartDb(){
+        List<Cart> carts = cartDao.getAllCart();
+        Cart zero = carts.get(0);
+        Assert.assertEquals(0,zero.getQuantity1());
+        Assert.assertEquals(0,zero.getQuantity2());
+        Assert.assertEquals(0,zero.getQuantity3());
+    }
+
+    /*Test*/
+
+
+}
+</file>
+
+</files>
